@@ -4,16 +4,17 @@
 {% if user.is_authenticated %}
     Hello, {{ user.username }}.
 {% else %}
-    <a href="{% url 'accounts:login' %}">Log in</a>
+    <p>You are not logged in</p>
 {% endif %}
 
-<h1>My blog posts</h1>
+<h1>All blog posts</h1>
     <ul>
         {% for post in posts %}
         <h3> {{ post.title }} </h3>
         <p> {{ post.content }} </p>
         <p> {{ post.date_posted }} </p>
         <p> Category: {{ post.category }} </p>
+        <p> Author: {{ post.owner }} </p>
         <br />
         {% endfor %}
     </ul>
