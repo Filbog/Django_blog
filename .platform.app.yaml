@@ -1,5 +1,5 @@
 name: "blog_project"
-type: "python:3.10"
+type: "python:3.12"
 
 relationships:
   database: "db:postgresql"
