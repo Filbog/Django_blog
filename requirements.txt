@@ -1,0 +1,7 @@
+asgiref==3.7.2
+Django==5.0
+django-bootstrap5==23.3
+gunicorn==21.2.0
+packaging==23.2
+platformshconfig==2.4.0
+sqlparse==0.4.4

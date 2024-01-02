@@ -1,0 +1,2 @@
+# search posts
+# posts on the index page and "your posts" is actually one template

@@ -1,14 +1,60 @@
-<a href="{% url 'blog_app:index' %}"><h1>Blog app</h1></a>
-{% if user.is_authenticated %}
-    <hr />
-    <a href="{% url 'blog_app:user_posts' %}">Your posts</a>
-    <a href="{% url 'blog_app:add_post' %}">Create new post</a> -
-    <form action="{% url 'accounts:logout' %}" method='post'>
-        {% csrf_token %}
-        <button name='logout'>Log out</button>
-    </form>
-{% else %}
-    <a href="{% url 'accounts:register' %}">Register</a> -
-    <a href="{% url 'accounts:login' %}">Log in</a>
-{% endif %}
-{% block content %}{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 border">
+        <div class="container-fluid px-3">
+          <a class="navbar-brand" href="{% url 'blog_app:index' %}">Blog app</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog_app:index' %}">Home</a>
+              </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class='nav-link' href="{% url 'blog_app:user_posts' %}">Your posts</a>
+              </li>
+              <li class="nav-item">
+                <a class='nav=link' href="{% url 'blog_app:add_post' %}">Create new post</a>
+              </li>
+              <li class="nav-item">
+                <form action="{% url 'accounts:logout' %}" method='post'>
+                    {% csrf_token %}
+                    <button name='logout'>Log out</button>
+                </form>
+              </li>
+              {% else %}
+              <li class="nav-item"><a class='nav-link' href="{% url 'accounts:login' %}">Log in</a></li>
+              <li class="nav-item"><a class='nav-link' href="{% url 'accounts:register' %}">Register</a></li> 
+            {% endif %}
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success disabled" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <main class="container">
+        <div class="pb-2 mb-2 border-bottom">
+            {% block page_header %} {% endblock page_header %}
+        </div>
+        <div>
+            {% block content %}{% endblock content %}
+        </div>
+      </main>
+</body>
+</html>
+
+

@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     # my apps
     "blog_app",
     "accounts",
+    # 3rd party apps
+    "django_bootstrap5",
     # default Django apps
     "django.contrib.admin",
     "django.contrib.auth",

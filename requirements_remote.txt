@@ -1,0 +1,3 @@
+# Reqs for live project - deployed on a remote server. For curiosity, I tried to install
+# gunicorn and psycopg2 locally - only succeeded with gunicorn. So leaving psycopg2 here
+psycopg2
