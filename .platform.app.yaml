@@ -13,13 +13,13 @@ web:
     # this is basically the counterpart of running our local server - 
     # - the "python manage.py runserver" commmand
     start: "gunicorn -w 4 -b unix:$SOCKET blog_project.wsgi:application"
-    locations:
-      "/":
-        passthru: true
-      "/static":
-        root: "static"
-        expires: 1h
-        allow: true
+  locations:
+    "/":
+      passthru: true
+    "/static":
+      root: "static"
+      expires: 1h
+      allow: true
 
 # size of the persistent disk of the application (in MB)
 disk: 512
